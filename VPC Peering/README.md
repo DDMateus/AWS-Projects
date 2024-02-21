@@ -16,9 +16,9 @@ A VPC peering connection establishes a private network connection between two VP
 4. **Testing**:
     - Verify connectivity by SSH into an EC2 instance in VPC A using PuTTY.
 
-![image](https://github.com/DDMateus/VPC-Peering/assets/88774178/b09eda46-1c78-4e6d-8db8-03b0e9dfe1d8)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/c5f8f3f2-822d-4079-8611-1ab07b362367)
 
-![image](https://github.com/DDMateus/VPC-Peering/assets/88774178/ec542c25-07f4-408b-923e-9a73f13e7c83)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/90ec56b4-a08a-4109-a2ef-86cd4525bc9a)
 
 5. **Peer VPC A with VPC C**:
     - Set up peering connection between VPC A and VPC C.
@@ -26,7 +26,7 @@ A VPC peering connection establishes a private network connection between two VP
 6. **Testing Connectivity**:
     - Ping an EC2 instance in VPC A from an EC2 instance in VPC C to confirm successful communication.
 
-![image](https://github.com/DDMateus/VPC-Peering/assets/88774178/56e98caf-e9d4-4c69-a084-4eee23606305)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/1a81d3be-f302-44c0-bccf-855d9480f8e6)
 
 7. **Resource Cleanup**: After testing, clean up resources.
 
