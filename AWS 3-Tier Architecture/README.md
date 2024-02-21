@@ -16,33 +16,33 @@ This guide provides step-by-step instructions for deploying a 3-tier architectur
 
 1. **Select Region**: Choose the AWS region where you want to create your VPC.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/b56d4b35-34d7-45de-a166-4337f218f143)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/4045ef85-3f29-44c4-88f7-8ce11bfb267c)
 
 2. **Create VPC**: Deploy a Virtual Private Cloud (VPC). This automatically creates a default private route table.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/67ee5b98-735c-434f-84b7-3ea000c6b7f2)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/06370fba-c88a-4cc8-b614-ed72f33485a1)
 
 3. **Internet Gateway**: Create and attach an Internet Gateway to the VPC to enable internet access for instances.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/16ebd6ce-c8c8-4525-b73a-989f86447812)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/8d294f76-b659-422a-bbe1-ef0ad872a39c)
 
 4. **Create Public Subnets**: Establish two public subnets in different availability zones. Modify IP settings to enable auto-assignment of IPv4 addresses.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/4e9e2812-d05e-4ba9-ad32-6737cb378f19)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/b7efdddf-1715-4751-b88b-53ee1f0f3ff1)
 
 5. **Configure Public Route Table**: Create a public route table and add a route for all traffic (`0.0.0.0/0`) via the Internet Gateway. Associate this route table with public subnets.
 
 6. **Create Private Subnets**: Set up four private subnets (2 in each AZ) for application and database tiers.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/c447469a-4052-4186-a819-1dcd88ce2186)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/2b173d07-57b8-4955-ba6a-aabdcf85f168)
 
 7. **Private Route Tables**: Create two route tables for private subnets and associate them accordingly.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/3e3cdcd9-fb4f-4499-942b-b199b9cce29b)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/8c92c266-4eb2-4995-99ed-2f7d7723fe2f)
 
 8. **NAT Gateway**: Deploy NAT Gateways in public subnets. Allocate two Elastic IP addresses for high availability. Update private route tables to direct internet-bound traffic through NAT Gateways.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/5705a36d-91e5-4286-be62-cafe1e4544e6)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/6e45011c-c52a-402f-be82-7719757b992b)
 
 9. **Testing Outbound Access**: Launch EC2 instances in private subnets (application tier) and test outbound internet access using AWS Systems Manager Run Command.
 
@@ -54,7 +54,7 @@ This guide provides step-by-step instructions for deploying a 3-tier architectur
    
    d. Repeat the process for EC2 instances in the second AZ.
 
-![image](https://github.com/DDMateus/AWS-3-Tier-Architecture/assets/88774178/1ce77fad-8972-4476-a366-3f1a3c94f138)
+![image](https://github.com/DDMateus/AWS-Projects/assets/88774178/63e026dd-9f79-4868-8f02-8c5dd305ed1d)
 
 ## Testing
 
