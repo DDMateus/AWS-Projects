@@ -1,0 +1,101 @@
+Description: Introduction to CloudFormation - VPC
+
+Resources:
+  #Create a VPC
+  MainVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: "true"
+      EnableDnsSupport: "true"
+      Tags:
+           - Key: Name
+             Value: VPC for CF
+  
+  # Create and attach Internet Gateway
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    DependsOn: MainVPC
+
+  AttachIGW:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+         VpcId: !Ref MainVPC
+         InternetGatewayId: !Ref InternetGateway
+  
+  # Create first subnet
+  FirstSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+        VpcId: !Ref MainVPC
+        CidrBlock: 10.0.10.0/24
+        AvailabilityZone: "us-east-2a"
+        Tags:
+          - Key: Name
+            Value: Public Subnet A
+
+  # Create another subnet
+  SecondSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+         VpcId: !Ref MainVPC
+         CidrBlock: 10.0.20.0/24
+         AvailabilityZone: "us-east-2b"
+         Tags:
+              - Key: Name 
+                Value: Public Subnet B
+
+  # Create and set a public route table
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+         VpcId: !Ref MainVPC
+         Tags:
+              - Key: Name
+                Value: Public Route Table
+  
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: AttachIGW
+    Properties:
+         RouteTableId: !Ref PublicRouteTable
+         DestinationCidrBlock: 0.0.0.0/0
+         GatewayId: !Ref InternetGateway
+  
+  # Associate Public Subnets to Route Table
+  PublicSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+         RouteTableId: !Ref PublicRouteTable
+         SubnetId: !Ref FirstSubnet
+
+  PublicSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+         RouteTableId: !Ref PublicRouteTable
+         SubnetId: !Ref SecondSubnet  
+  
+  # Create a security group
+  MainSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+         GroupDescription: Security Group For Web Server
+         VpcId: !Ref MainVPC
+         SecurityGroupIngress:
+              - IpProtocol: tcp
+                FromPort: 80
+                ToPort: 80
+                CidrIp: 81.84.104.133/32
+         Tags:
+              - Key: Name
+                Value: Web Server Security Group
+
+Outputs:
+     MainSubnet:
+      Value: !Ref FirstSubnet
+      Description: Public Subnet ID with Direct Internet Route
+
+     MainSecurityGroup:
+      Value: !Ref MainSecurityGroup
+      Description: Security Group ID for the Web Server
+
