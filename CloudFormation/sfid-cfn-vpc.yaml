@@ -85,7 +85,7 @@ Resources:
               - IpProtocol: tcp
                 FromPort: 80
                 ToPort: 80
-                CidrIp: 81.84.104.133/32
+                CidrIp: <your IP address>
          Tags:
               - Key: Name
                 Value: Web Server Security Group
