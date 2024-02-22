@@ -130,7 +130,7 @@ MainSecurityGroup:
       - IpProtocol: tcp
         FromPort: 80
         ToPort: 80
-        CidrIp: 127.0.0.1/32
+        CidrIp: <your IP address>
     Tags:
       - Key: Name
         Value: Web Server Security Group - SFID
