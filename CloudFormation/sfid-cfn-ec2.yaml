@@ -2,10 +2,10 @@ Description: Introduction to CloudFormation - EC2
 
 Parameters:
   PublicSubnet:
-    Description: Select a Public Subnet created in the "VPC for SFID CFN" Lab (Hint - Search for "SFID")
+    Description: Select a Public Subnet created in the "VPC for CF" 
     Type: 'AWS::EC2::Subnet::Id'
   SecurityGroup:
-    Description: Select the Security Group created in the "VPC for SFID CFN" Lab (Hint - Search for "SFID")
+    Description: Select the Security Group created in the "VPC for CF"
     Type: 'AWS::EC2::SecurityGroup::Id'
 
 Resources:
