@@ -46,6 +46,10 @@ This project demonstrates the deployment of a static HTML web application on Ama
 
 A VPC peering connection establishes a private network connection between two VPCs, allowing secure communication between them. In this guide, we'll peer VPC A with VPC B and VPC A with VPC C using CloudFormation templates.
 
+### 9. [Deploy a static web app on AWS with Docker](https://github.com/DDMateus/AWS-Projects/tree/3f2b82cd48ac28269d34bd35f7dbb325eb672068/Deploy%20a%20static%20web%20app%20on%20AWS%20with%20Docker)
+
+<p align="justify">Deployed a static web application on Amazon Web Services (AWS) using Docker containerization technology. Leveraged Docker to package the web application into a portable container, ensuring consistent deployment across different environments. Utilized AWS services such as Amazon Elastic Container Registry (ECR) for storing Docker images and Amazon ECS (Elastic Container Service) for orchestrating containerized applications.</p>
+
 ## Getting Started
 
 To get started with using or contributing to any of the projects in this repository, follow these steps:
